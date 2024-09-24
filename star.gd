@@ -33,4 +33,4 @@ var luminosity: float:
 
 func _init() -> void:
 
-        pass
+        print("Hello")
