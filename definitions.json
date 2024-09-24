@@ -3,7 +3,7 @@
     "spectral_classes": {
       "M": {
         "temp": [2200, 3800],
-        "spectral_class_string": "Red",
+        "spectral_class_descriptor": "Red",
         "weight": 72.0,
         "luminosity_classes": {
           "V": {
@@ -45,7 +45,7 @@
       },
       "K": {
         "temp": [3800, 5200],
-        "spectral_class_string": "Orange",
+        "spectral_class_descriptor": "Orange",
         "weight": 12.0,
         "luminosity_classes": {
           "V": {
@@ -80,7 +80,7 @@
       },
       "G": {
         "temp": [5200, 6000],
-        "spectral_class_string": "Yellow",
+        "spectral_class_descriptor": "Yellow",
         "weight": 8.0,
         "luminosity_classes": {
           "V": {
@@ -122,7 +122,7 @@
       },
       "F": {
         "temp": [6000, 7500],
-        "spectral_class_string": "White-Yellow",
+        "spectral_class_descriptor": "White-Yellow",
         "weight": 4.0,
         "luminosity_classes": {
           "V": {
@@ -157,8 +157,8 @@
       },
       "A": {
         "temp": [7500, 10000],
-        "spectral_class_string": "White",
-        "weight": 1.5,
+        "spectral_class_descriptor": "White",
+        "weight": 2.5,
         "luminosity_classes": {
           "V": {
             "luminosity_class_string": "Main Sequence",
@@ -199,8 +199,8 @@
       },
       "B": {
         "temp": [10000, 30000],
-        "spectral_class_string": "Blue",
-        "weight": 0.1,
+        "spectral_class_descriptor": "Blue",
+        "weight": 1.0,
         "luminosity_classes": {
           "V": {
             "luminosity_class_string": "Main Sequence",
@@ -241,8 +241,8 @@
       },
       "O": {
         "temp": [30000, 60000],
-        "spectral_class_string": "Blue",
-        "weight": 0.00003,
+        "spectral_class_descriptor": "Blue",
+        "weight": 0.5,
         "luminosity_classes": {
           "V": {
             "luminosity_class_string": "Main Sequence",
