@@ -13,10 +13,11 @@ func _ready() -> void:
 
 		print(star.get("stellar_class_string"))
 		print("\tTemperature: %s" % star.get("temperature"))
-		print("\tLuminosity: %f " % (star.get("luminosity") * Star.SOLAR_LUMINOSITY))
 		print("\tLuminosity: %f" % star.get("luminosity"))
 		print("\tMass: %.2f" % star.get("mass"))
 		print("\tRadius: %.2f" % star.get("radius"))
+		print("\tDensity: %.2f" % star.get("density"))
+		print("\tSurface Gravity: %.2f" % star.get("surface_gravity"))
 
 		star_seed += 1
 

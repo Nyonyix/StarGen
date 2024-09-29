@@ -1,9 +1,11 @@
 class_name Star extends Node2D
 
 const STEFFAN_BOLTZMANN = 5.670374419e-8
-const SOLAR_MASS = 1.9885e30
-const SOLAR_RADIUS = 6.957e8
-const SOLAR_LUMINOSITY = 3.828e26
+const SOLAR_MASS = 1.9885e30 # Kg
+const SOLAR_RADIUS = 6.957e8 # m
+const SOLAR_LUMINOSITY = 3.828e26 # W
+const SOLAR_VOLUME = 1.412e27 # m^3
+const GRAVITY_SUN = NyonUtil.GRAVITY_G * 28.02
 
 
 var def_data: Dictionary
@@ -69,6 +71,24 @@ var luminosity: float:
 	set(value):
 		luminosity = value
 
+var volume: float:
+	get:
+		return volume
+	set(value):
+		volume = value
+
+var density: float:
+	get:
+		return density
+	set(value):
+		density = value
+
+var surface_gravity: float:
+	get:
+		return surface_gravity
+	set(value):
+		surface_gravity = value
+
 func _init(def_input: Dictionary, star_seed: int = 1) -> void:
 
 	def_data = def_input
@@ -85,6 +105,11 @@ func _init(def_input: Dictionary, star_seed: int = 1) -> void:
 	radius = _generate_range("radius")
 
 	_calculate_luminosity()
+
+	volume = NyonUtil.calculate_volume(radius * SOLAR_RADIUS) / SOLAR_VOLUME
+	density = NyonUtil.calculate_density(mass * SOLAR_MASS, volume * SOLAR_VOLUME)
+	surface_gravity = NyonUtil.calculate_surface_gravity(density, radius * SOLAR_RADIUS) / NyonUtil.GRAVITY_G
+	
 
 func _generate_spectral_class() -> void:
 

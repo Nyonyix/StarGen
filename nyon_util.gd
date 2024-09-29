@@ -1,28 +1,16 @@
-class_name NyonMath
+class_name NyonUtil
 
-static func convert_to_e(value: float) -> float:
+const GRAVITATIONAL_CONSTANT = 6.67430e-11 # N⋅m^2⋅kg^(−2)
+const GRAVITY_G = 9.80665 # m/s^2
 
-	if value == 0:
-		return 0
+static func calculate_volume(radius: float) -> float:
 
-	var value_string = str(value)
-	
-	match value_string[0]:
+    return (4.0/3.0) * PI * radius ** 3
 
-		"-":
-		
-			if value_string[1] != "0":
+static func calculate_density(mass: float, volume: float) -> float:
 
-				return 0
+    return mass / volume
 
-			else:
+static func calculate_surface_gravity(density: float, radius: float) -> float:
 
-				return 0
-		
-		"0":
-
-			return 0
-
-		_:
-
-			return 0
+    return ((4 * PI) / 3) * GRAVITATIONAL_CONSTANT * density * radius
