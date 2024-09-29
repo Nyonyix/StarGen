@@ -7,9 +7,14 @@ const SOLAR_LUMINOSITY = 3.828e26 # W
 const SOLAR_VOLUME = 1.412e27 # m^3
 const GRAVITY_SUN = NyonUtil.GRAVITY_G * 28.02
 
-
 var def_data: Dictionary
 var rng: RandomNumberGenerator
+
+var colour: Color:
+	get:
+		return colour
+	set(value):
+		colour = value
 
 var scaler: float:
 	get:
@@ -110,6 +115,7 @@ func _init(def_input: Dictionary, star_seed: int = 1) -> void:
 	density = NyonUtil.calculate_density(mass * SOLAR_MASS, volume * SOLAR_VOLUME)
 	surface_gravity = NyonUtil.calculate_surface_gravity(density, radius * SOLAR_RADIUS) / NyonUtil.GRAVITY_G
 	
+	colour = NyonUtil.convert_kelvin_to_rgb(int(temperature))
 
 func _generate_spectral_class() -> void:
 
