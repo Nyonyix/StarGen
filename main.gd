@@ -10,21 +10,27 @@ func _ready() -> void:
 
 	for i in range(100):
 
-		var star = Star.new(def_data["star"], star_seed)
+		# var star = Star.new(def_data["star"]["spectral_classes"], star_seed)
 
-		star_dict[i] = star
+		# star_dict[i] = star
 
-		print(star.get("stellar_class_string"))
-		print("\tTemperature: %s" % star.get("temperature"))
-		print("\tLuminosity: %f" % star.get("luminosity"))
-		print("\tMass: %.2f" % star.get("mass"))
-		print("\tRadius: %.2f" % star.get("radius"))
-		print("\tDensity: %.2f" % star.get("density"))
-		print("\tSurface Gravity: %.2f" % star.get("surface_gravity"))
+		# print(star.get("stellar_class_string"))
+		# print("\tTemperature: %s" % star.get("temperature"))
+		# print("\tLuminosity: %f" % star.get("luminosity"))
+		# print("\tMass: %.2f" % star.get("mass"))
+		# print("\tRadius: %.2f" % star.get("radius"))
+		# print("\tDensity: %.2f" % star.get("density"))
+		# print("\tSurface Gravity: %.2f" % star.get("surface_gravity"))
 
+		var solar_system = SolarSystem.new(def_data["star"], star_seed)
+		print(solar_system.get("system_type_descriptor"))
+
+		for s in solar_system.get("system_stars"):
+
+			print(s.get("stellar_class_string"))
+
+		print("")
 		star_seed += 1
-
-	breakpoint
 
 	# for i in range(100):
 

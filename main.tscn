@@ -4,3 +4,10 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_0qowx")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(514, 295)
+color = Color(0, 0.411765, 0.219608, 1)
+invert_enabled = true
+invert_border = 412.1
+polygon = PackedVector2Array(-151, -4, 1, -127, 141, -182, 270, -100, 227, 130, -143, 233, 131, 103, 141, -35, 2, -71)

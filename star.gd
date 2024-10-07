@@ -1,4 +1,4 @@
-class_name Star extends Node2D
+class_name Star extends CelestialBody
 
 const STEFFAN_BOLTZMANN = 5.670374419e-8
 const SOLAR_MASS = 1.9885e30 # Kg
@@ -9,12 +9,6 @@ const GRAVITY_SUN = NyonUtil.GRAVITY_G * 28.02
 
 var def_data: Dictionary
 var rng: RandomNumberGenerator
-
-var colour: Color:
-	get:
-		return colour
-	set(value):
-		colour = value
 
 var scaler: float:
 	get:
@@ -52,49 +46,9 @@ var stellar_class_string: String:
 	set(value):
 		stellar_class_string = value
 
-var temperature: float:
-	get:
-		return temperature
-	set(value):
-		temperature = value
-
-var mass: float:
-	get:
-		return mass
-	set(value):
-		mass = value
-
-var radius: float:
-	get:
-		return radius
-	set(value):
-		radius = value
-
-var luminosity: float:
-	get:
-		return luminosity
-	set(value):
-		luminosity = value
-
-var volume: float:
-	get:
-		return volume
-	set(value):
-		volume = value
-
-var density: float:
-	get:
-		return density
-	set(value):
-		density = value
-
-var surface_gravity: float:
-	get:
-		return surface_gravity
-	set(value):
-		surface_gravity = value
-
 func _init(def_input: Dictionary, star_seed: int = 1) -> void:
+
+	super()
 
 	def_data = def_input
 	rng = RandomNumberGenerator.new()
@@ -119,15 +73,14 @@ func _init(def_input: Dictionary, star_seed: int = 1) -> void:
 
 func _generate_spectral_class() -> void:
 
-	var spectral_classes_data = def_data["spectral_classes"]
 	var spectral_classes: Dictionary
 	var weight_check = 0
 	var current_weight = 0
 	var random_weight = rng.randf_range(0, 100)
 
-	for k in spectral_classes_data.keys():
+	for k in def_data.keys():
 
-		var weight = spectral_classes_data[k]["weight"]
+		var weight = def_data[k]["weight"]
 		spectral_classes[k] = weight
 
 		weight_check += weight
@@ -143,12 +96,12 @@ func _generate_spectral_class() -> void:
 
 		if random_weight <= current_weight:
 			spectral_letter = k
-			spectral_descriptor = spectral_classes_data[k]["spectral_class_descriptor"]
+			spectral_descriptor = def_data[k]["spectral_class_descriptor"]
 			break
 
 func _generate_luminosity_class() -> void:
 
-	var luminosity_classes_data = def_data["spectral_classes"][spectral_letter]["luminosity_classes"]
+	var luminosity_classes_data = def_data[spectral_letter]["luminosity_classes"]
 	var luminosity_classes: Dictionary
 	var weight_check = 0
 	var current_weight = 0
@@ -179,9 +132,9 @@ func _generate_range(range_key: String) -> float:
 
 	var range_data
 	if range_key == "temp":
-		range_data = def_data["spectral_classes"][spectral_letter]["temp"]
+		range_data = def_data[spectral_letter]["temp"]
 	else:
-		range_data = def_data["spectral_classes"][spectral_letter]["luminosity_classes"][luminosity_letter][range_key]
+		range_data = def_data[spectral_letter]["luminosity_classes"][luminosity_letter][range_key]
 	
 	var range_min = range_data[0]
 	var range_max = range_data[1]
